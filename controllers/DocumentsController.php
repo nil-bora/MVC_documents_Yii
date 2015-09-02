@@ -160,21 +160,6 @@ class DocumentsController extends Controller {
 				}
 		    }
 	    }
-	    
-	    
-	    
-		
-		
-				
-	    /*$post = new Post();
-	   
-	    $post->content->populateByForm();
-        $post->message = "Test Message";
-
-        if ($post->validate()) {
-            $post->save();
-        } 
-        */
 	  
     }
     
@@ -185,8 +170,6 @@ class DocumentsController extends Controller {
         $this->render('show', array('user' => $user));
     }
     
-
-    //edit 13.05 NIL
     public function actionCreate() {
 
 	    $this->forcePostRequest();
