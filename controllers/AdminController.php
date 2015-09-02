@@ -1,24 +1,6 @@
 <?php
 
 /**
- * HumHub
- * Copyright © 2014 The HumHub Project
- *
- * The texts of the GNU Affero General Public License with an additional
- * permission and of our proprietary license can be found at and
- * in the LICENSE file you have received along with this program.
- *
- * According to our dual licensing model, this program can be used either
- * under the terms of the GNU Affero General Public License, version 3,
- * or under a proprietary license.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU Affero General Public License for more details.
- */
-
-/**
  * Description of AdminController
  *
  * @author luke
@@ -60,13 +42,6 @@ class AdminController extends Controller
 
         $pages = Folder::model()->findAll(array('index'=>'id'));
         
-		$parent = array();
-		
-		/*
-        foreach($pages as $one) {
-	        $parent[$one->id] = $one->parent_id>0?$pages[$one->parent_id]:false;
-	    }
-	    */
         $this->render('index', array(
         	'pages' => $pages,
         	'parent' => 1
@@ -85,32 +60,19 @@ class AdminController extends Controller
             echo CActiveForm::validate($page);
             Yii::app()->end();
         }
-
-        //Yii::app()->clientScript->registerCssFile($this->getModule()->getAssetsUrl() . '/bootstrap-select.min.css');
-        //Yii::app()->clientScript->registerScriptFile($this->getModule()->getAssetsUrl() . '/bootstrap-select.min.js');
        
-        	
         if (isset($_POST['Folder'])) {
-        	
-        	//$page->content->populateByForm();
             $page->attributes = $_POST['Folder'];
-  
-            //if ($page->validate()) {
+            
+            if ($page->validate()) {
                 $page->save();
-             //   $this->redirect(Yii::app()->createUrl('//pages/admin'));
-           // }
+            }
             
         }
 
-		$root=array();
-		$pages = Folder::model()->findAll();
-		/*
-        foreach($pages as $one) {
-	        if($one->parent_id == 0) {
-				$root[$one->id]=$one->title;
-			}
-		}
-		*/
+	$root=array();
+	$pages = Folder::model()->findAll();
+        
         $this->render('edit', array(
         	'page' => $page,
         	'root' => $root
