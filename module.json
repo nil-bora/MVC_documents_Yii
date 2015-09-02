@@ -1,0 +1,11 @@
+{
+    "id": "documents",
+    "name": "Документы",
+    "description": "Работа с документами",
+    "keywords": ["documents", "perevorot"],
+    "version": "0.0.1",
+    "humhub": {
+        "minVersion": "0.8.0"
+    },
+    "screenshots": ["assets/screen1.jpg", "assets/screen2.jpg", "assets/screen3.jpg"]
+}
